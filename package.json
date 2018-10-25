@@ -1,0 +1,20 @@
+{
+  "name": "experiments",
+  "version": "1.0.0",
+  "main": "./src/index.html",
+  "scripts": {
+    "dev": "./node_modules/.bin/parcel ./src/index.html",
+    "build": "./node_modules/.bin/parcel build src/index.html --public-url=\"./\""
+  },
+  "author": "Thomas Hartmann <thomas.o.hartmann@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/three": "^0.93.4",
+    "parcel-bundler": "^1.10.3",
+    "three": "^0.97.0"
+  },
+  "devDependencies": {
+    "sass": "^1.14.3",
+    "typescript": "^3.1.3"
+  }
+}
