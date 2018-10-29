@@ -1,28 +1,27 @@
 import * as three from 'three'
 
-const height = window.innerHeight
-const width = window.innerWidth
-const scene = new three.Scene()
-const camera = new three.PerspectiveCamera(75, width / height, .1, 1000)
+export const init = (canvasId: string) => {
+  const canvas = document.querySelector(`#${canvasId}`)
+  console.log('this is new')
 
-const renderer = new three.WebGLRenderer()
-renderer.setSize(width, height)
+  const height = window.innerHeight
+  const width = window.innerWidth
+  const scene = new three.Scene()
+  const camera = new three.PerspectiveCamera(75, width / height, .1, 1000)
 
-document.body.appendChild(renderer.domElement)
+  camera.position.z = 5
 
-const geometry = new three.BoxGeometry(1, 1, 1)
-const material = new three.MeshBasicMaterial({
-  color: 0xFFCC00
-})
-const cube = new three.Mesh(geometry, material)
-scene.add(cube)
+  const renderer = new three.WebGLRenderer({
+    canvas
+  })
+  renderer.setSize(width, height)
 
-camera.position.z = 5
+  document.body.appendChild(renderer.domElement)
 
-const animate = () => {
-  requestAnimationFrame(animate)
-  cube.rotation.x += 0.01
-  cube.rotation.y += 0.01
-  renderer.render(scene, camera)
+  const loader = new three.ObjectLoader()
+
+  loader.load('assets/obj/male02/male02.obj',
+    obj => scene.add(obj), xhr => console.log(xhr.loaded / xhr.total * 100) + '% loaded',
+    err => console.error('An error occurred', err)
+  )
 }
-animate()

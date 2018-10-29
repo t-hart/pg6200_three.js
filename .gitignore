@@ -197,3 +197,7 @@ npm-debug.log
 .tern-port
 ./lib/
 *.bs.js
+
+# Elm
+elm-stuff
+repl-temp-*
