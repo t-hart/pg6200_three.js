@@ -1,3 +1,3 @@
 import { init } from './main'
-const canvasId = 'canvas'
-init(canvasId)
+const canvas = document.querySelector('#canvas')
+init(canvas)
